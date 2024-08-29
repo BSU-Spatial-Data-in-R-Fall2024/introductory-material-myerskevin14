@@ -94,26 +94,34 @@ ul.task-list li input[type="checkbox"] {
 <li>How does geographic analysis fit into your goals for your research? Given our discussion of the aims and limitations of geographic analysis, are there particular issues that you would like to know more about or guard against?</li>
 </ol>
 </div>
+<p>I would like to be able to use my movement data to create maps of where individuals are flying and how they use the landscape differently (hunting, breeding, exploring). I would like to know more about the process of pulling data from outside sources, such as government agencies, and how to prepare data for analysis. I am curious if pulling something like weather data vs land cover is more challenging or if it requires additional cleaning before use.</p>
 <div style="color:purple">
 <ol start="2" type="1">
 <li>What are the primary components that describe spatial data?</li>
 </ol>
 </div>
+<p>Primary components that describe spatial data include Location, which defines where an object or phenomenon is situated. Place, which is used to describe and individuals emotions regarding a specific location in time and space. Region, which defines boundaries using certain characteristics that can be grouped using location. Scale can also be used to describe spatial data to influence the accuracy and generalization of the data. Resolution is used to refer to the units in the spatial data as the size of a grid cell or precision of coordinates.</p>
 <div style="color:purple">
 <ol start="3" type="1">
 <li>What is the coordinate reference system and why is it important</li>
 </ol>
 </div>
+<p>A CRS is a framework describes how multidimensional data is mapped onto Earth. It creates a relationship between the coordinate system and the surface, allowing spatial data to be accurately interpreted and compared across different geographic areas. It is composed of a coordinate system, a Datum, and a Projection. It is important for ensuring the accuracy and consistency of the spatial data being used. It also allows for the data to be reproducible across different applications and contexts.</p>
 <div style="color:purple">
 <ol start="4" type="1">
 <li>Find two maps of the same area in different projections? How does the projection affect your perception of the data being displayed?</li>
 </ol>
 </div>
+<p>The choice of map projections significantly affects how the geographic data is being perceived. Some projections can mislead viewers about the relative size of an area while maintaining an accurate shapes of the area. while other map projections can offer a more accurate view of an area to help prevent size distortion but looses accuracy in the shape.</p>
 <div style="color:purple">
 <ol start="5" type="1">
 <li>Read in the <code>cejst.shp</code> file in the <code>assignment01</code> folder. How many attributes describe each object? How many unique geometries are there? What is the coordinate reference system?</li>
 </ol>
 </div>
+<p>library(sf) load data here cejst_dat &lt;- st_read(“name of data”) print(cejst_dat) plot(cejst_dat)</p>
+<p>attributes &lt;- ncol(cejst_dat) - 1 #excluding geometry column print(attributes) There are # amount of attributes that describe each object.</p>
+<p>unique_geo &lt;- unique(st_geometry_type(cejst_data)) print(unique_geo) There are # unique geometries</p>
+<p>crs &lt;- st_crs(cejst_data) print(crs) The coordinate reference system is…</p>
 </section>
 </section>
 
