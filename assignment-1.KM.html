@@ -118,10 +118,15 @@ ul.task-list li input[type="checkbox"] {
 <li>Read in the <code>cejst.shp</code> file in the <code>assignment01</code> folder. How many attributes describe each object? How many unique geometries are there? What is the coordinate reference system?</li>
 </ol>
 </div>
-<p>library(sf) load data here cejst_dat &lt;- st_read(“name of data”) print(cejst_dat) plot(cejst_dat)</p>
-<p>attributes &lt;- ncol(cejst_dat) - 1 #excluding geometry column print(attributes) There are # amount of attributes that describe each object.</p>
-<p>unique_geo &lt;- unique(st_geometry_type(cejst_data)) print(unique_geo) There are # unique geometries</p>
-<p>crs &lt;- st_crs(cejst_data) print(crs) The coordinate reference system is…</p>
+<p>library(sf) library(tidyverse)</p>
+<p>load data here</p>
+<p>cejst_dat &lt;- read_sf(dsn = “/opt/data/data/assignment01/cejst_nw.shp”)</p>
+<p>print(cejst_dat) plot(cejst_dat)</p>
+<p>attributes &lt;- ncol(cejst_dat)-1 #excluding geometry column print(attributes)</p>
+<p>#There are 123 attributes that describe each object.</p>
+<p>unique_geo &lt;- unique(st_geometry_type(cejst_dat)) print(unique_geo)</p>
+<p>#There are 18 unique geometries</p>
+<p>crs &lt;- st_crs(cejst_dat) print(crs) #The coordinate reference system</p>
 </section>
 </section>
 
