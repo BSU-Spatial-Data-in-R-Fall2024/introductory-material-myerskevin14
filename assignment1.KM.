@@ -1,0 +1,88 @@
+---
+title: "assignment_01_KM.qmd"
+author: "Kevin Myers"
+format: html
+---
+
+# assignment-1: Introductory Material
+
+The first part of the course was designed to introduce some of the foundations of geographic thought, core technical details of working with spatial data, and introduce `R` as a tool for end-to-end spatial workflows. [This homework](https://classroom.github.com/a/eNiOQIFf) is meant to help reinforce those concepts and identify any gaps that I need to fill in as we go. There are additional step-by-step guides in the By the end of this assignment you should be able to:
+
+-   Situate your research into the various fields of geographic analysis.
+
+-   Describe the key components of spatial data.
+
+-   Read spatial data into `R` and access these components.
+
+-   Begin to document your work using Quarto.
+
+## Instructions
+
+1.  After you've joined the assignment repository, you should have this file (named Readme.md) inside of a R project named assignment-1-xx where xx is your github username (or initials).
+
+2.  Once you've verified that you've correctly cloned the assignment repository, create a new Quarto document. Name this file assignment-1-xxx.qmd and give it a title (like M Williamson Assignment 1). Make sure that you select the html output option (Quarto can do a lot of cool things, but the html format is the least-likely to cause you additional headaches). We'll be using Quarto throughout the course so it's worth checking out the other tutorials in the getting started section.
+
+3.  Copy the questions below into your document and change the color of their text.
+
+4.  Save the changes and make your first commit!
+
+5.  Answer the questions making sure save and commit at least 2 more times (having 3 commits is part of the assignment).
+
+6.  Render the document to html (you should now have at least 3 files in the repository: Readme.md, assignment-1-xx.qmd, and assignment-1-xx.html). Commit these changes and push them to the repository on GitHub. You should see the files there when you go to github.com.
+
+## Questions for the Assignment
+
+::: {style="color:purple"}
+1.  How does geographic analysis fit into your goals for your research? Given our discussion of the aims and limitations of geographic analysis, are there particular issues that you would like to know more about or guard against?
+:::
+
+I would like to be able to use my movement data to create maps of where individuals are flying and how they use the landscape differently (hunting, breeding, exploring). I would like to know more about the process of pulling data from outside sources, such as government agencies, and how to prepare data for analysis. I am curious if pulling something like weather data vs land cover is more challenging or if it requires additional cleaning before use.
+
+::: {style="color:purple"}
+2.  What are the primary components that describe spatial data?
+:::
+
+Primary components that describe spatial data include Location, which defines where an object or phenomenon is situated. Place, which is used to describe and individuals emotions regarding a specific location in time and space. Region, which defines boundaries using certain characteristics that can be grouped using location. Scale can also be used to describe spatial data to influence the accuracy and generalization of the data. Resolution is used to refer to the units in the spatial data as the size of a grid cell or precision of coordinates.
+
+::: {style="color:purple"}
+3.  What is the coordinate reference system and why is it important
+:::
+
+A CRS is a framework describes how multidimensional data is mapped onto Earth. It creates a relationship between the coordinate system and the surface, allowing spatial data to be accurately interpreted and compared across different geographic areas. It is composed of a coordinate system, a Datum, and a Projection. It is important for ensuring the accuracy and consistency of the spatial data being used. It also allows for the data to be reproducible across different applications and contexts.
+
+::: {style="color:purple"}
+4.  Find two maps of the same area in different projections? How does the projection affect your perception of the data being displayed?
+:::
+
+The choice of map projections significantly affects how the geographic data is being perceived. Some projections can mislead viewers about the relative size of an area while maintaining an accurate shapes of the area. while other map projections can offer a more accurate view of an area to help prevent size distortion but looses accuracy in the shape.
+
+::: {style="color:purple"}
+5.  Read in the `cejst.shp` file in the `assignment01` folder. How many attributes describe each object? How many unique geometries are there? What is the coordinate reference system?
+:::
+
+library(sf)
+library(tidyverse)
+
+
+load data here
+
+cejst_dat <- read_sf(dsn = "/opt/data/data/assignment01/cejst_nw.shp")
+
+print(cejst_dat)
+plot(cejst_dat)
+
+attributes <- ncol(cejst_dat)-1
+#excluding geometry column
+print(attributes)
+
+#There are 123 attributes that describe each object.
+
+unique_geo <- unique(st_geometry_type(cejst_dat))
+print(unique_geo)
+
+#There are 18 unique geometries 
+
+crs <- st_crs(cejst_dat)
+print(crs)
+#The coordinate reference system 
+
